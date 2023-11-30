@@ -42,12 +42,13 @@ public class CAdverbio implements IAdverbio{
 
     @Override
     public String obtenerAdverbio(String palabra) {
+        String salida="";
         String[] obtenerAdverbios=agregarAdverbio();
         for (String obtenerAdverbio : obtenerAdverbios) {
-            if(palabra.equals(obtenerAdverbio)){
-                return palabra; 
+            if(palabra.equalsIgnoreCase(obtenerAdverbio)){
+                salida=obtenerAdverbio;
             }
         }
-        return "";    }
+        return salida;    }
     
 }

@@ -42,13 +42,14 @@ public class CAdjetivos implements IAdjetivo{
 
     @Override
     public String obtenerAdjetivo(String palabra) {
+        String salida="";
         String[] obtenerAdjetivos=agregarAdjetivo();
         for (String obtenerAdjetivo : obtenerAdjetivos) {
-            if(palabra.equals(obtenerAdjetivo)){
-                return palabra; 
+            if(palabra.equalsIgnoreCase(obtenerAdjetivo)){
+                salida=obtenerAdjetivo; 
             }
         }
-        return "";
+        return salida;
         
     }
 

@@ -4,7 +4,12 @@
  */
 package proyecto;
 
+import clases.CAdjetivos;
+import clases.CAdverbio;
+import clases.CArticulos;
+import clases.CPronombre;
 import clases.CSustantivo;
+import clases.CVerbo;
 
 /**
  *
@@ -31,6 +36,9 @@ public class main extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTextArea1 = new javax.swing.JTextArea();
         jButton1 = new javax.swing.JButton();
+        txtPalabra = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -38,48 +46,107 @@ public class main extends javax.swing.JFrame {
         jTextArea1.setRows(5);
         jScrollPane1.setViewportView(jTextArea1);
 
-        jButton1.setText("jButton1");
+        jButton1.setText("Mostrar");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
 
+        txtPalabra.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtPalabraActionPerformed(evt);
+            }
+        });
+
+        jLabel1.setText("Palabra");
+
+        jLabel4.setIcon(new javax.swing.ImageIcon("D:\\Universidad\\Tecnologico\\Quinto Semestre\\Lenguajes y automatas\\Unidad 5\\Proyecto\\Imagenes\\imagen.jpg")); // NOI18N
+        jLabel4.setText("jLabel4");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(51, 51, 51)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 333, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(80, 80, 80)
-                .addComponent(jButton1)
-                .addContainerGap(110, Short.MAX_VALUE))
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jButton1)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(txtPalabra, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(17, 17, 17)
+                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 291, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(88, 88, 88)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(201, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(88, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(80, 80, 80))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(151, 151, 151)
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtPalabra, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1))
+                .addGap(18, 18, 18)
                 .addComponent(jButton1)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(28, 28, 28)
+                        .addComponent(jLabel4))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 246, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(76, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        String[] palabrasSeparadasArray;
+        String palabratxt = txtPalabra.getText();
+        String delimitadores = "(?<=\\s)|(?=\\s)|(?<=[-+*/(),;=])|(?=[-+*/(),;=])";
+        palabrasSeparadasArray = palabratxt.split(delimitadores);
+        String salidaSustantivo="",salidaAdjetivo="",salidaAdverbio="",salidaVerbo="",salidaPronombre="",salidaArticulo="";
         CSustantivo Csus = new CSustantivo();
-        String palabras[] =Csus.agregarSustantivo();
-        for (String palabra : palabras) {
-            jTextArea1.append(palabra+"\n");
+        CAdjetivos CAdj= new CAdjetivos();
+        CAdverbio CAdv= new CAdverbio();
+        CVerbo Cverb= new CVerbo();
+        CPronombre Cpro= new CPronombre();
+        CArticulos CArti= new CArticulos();
+        
+        for (String palabrasSeparada : palabrasSeparadasArray) {
+            salidaSustantivo += Csus.obtenerSustantivo(palabrasSeparada)+" ";
         }
-        
-        
+        for (String palabrasSeparada : palabrasSeparadasArray) {
+            salidaAdjetivo += CAdj.obtenerAdjetivo(palabrasSeparada)+" ";
+        }
+        for (String palabrasSeparada : palabrasSeparadasArray) {
+            salidaAdverbio += CAdv.obtenerAdverbio(palabrasSeparada)+" ";
+        }
+        for (String palabrasSeparada : palabrasSeparadasArray) {
+            salidaVerbo += Cverb.obtenerVerbo(palabrasSeparada)+" ";
+        }
+        for (String palabrasSeparada : palabrasSeparadasArray) {
+            salidaVerbo += Cverb.obtenerVerbo(palabrasSeparada)+" ";
+        }
+        for (String palabrasSeparada : palabrasSeparadasArray) {
+            salidaPronombre += Cpro.obtenerPronombre(palabrasSeparada)+" ";
+        }
+        for (String palabrasSeparada : palabrasSeparadasArray) {
+            salidaArticulo += CArti.obtenerArticulo(palabrasSeparada)+" ";
+        }
+        jTextArea1.setText("Sustantivos: " + salidaSustantivo+"\n"+"Adjetivos: "+salidaAdjetivo+"\n"+"Adverbios: "+salidaAdverbio+"\n"+"Verbos: "+salidaVerbo);
+
+
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void txtPalabraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPalabraActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtPalabraActionPerformed
 
     /**
      * @param args the command line arguments
@@ -118,7 +185,10 @@ public class main extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextArea jTextArea1;
+    private javax.swing.JTextField txtPalabra;
     // End of variables declaration//GEN-END:variables
 }

@@ -15,37 +15,37 @@ public class CVerbo implements IVerbo {
     @Override
     public String[] agregarVerbo() {
         String[] verbos = {
-            "Correr", "Saltar", "Nadar", "Volar", "Caminar",
-            "Bailar", "Cantar", "Pintar", "Escribir", "Leer",
-            "Estudiar", "Aprender", "Enseñar", "Construir", "Destruir",
-            "Crear", "Imaginar", "Soñar", "Resolver", "Pensar",
-            "Hablar", "Escuchar", "Observar", "Experimentar", "Descubrir",
-            "Viajar", "Conducir", "Navegar", "Explorar", "Probar",
-            "Comer", "Beber", "Dormir", "Despertar", "Trabajar",
-            "Descansar", "Jugar", "Competir", "Colaborar", "Ayudar",
-            "Amar", "Odiar", "Sentir", "Emocionar", "Cuidar",
-            "Atrapar", "Liberar", "Gritar", "Silbar", "Reír",
-            "Llorar", "Sonreír", "Ganar", "Perder", "Conquistar",
-            "Perdonar", "Olvidar", "Recordar", "Celebrar", "Lamentar",
-            "Convencer", "Debatir", "Discutir", "Decidir", "Dudar",
-            "Aferrar", "Abandonar", "Conectar", "Desconectar", "Explotar",
-            "Desarrollar", "Estimar", "Valorar", "Preferir", "Sugerir",
-            "Aceptar", "Rechazar", "Negociar", "Compartir", "Construir",
-            "Destruir", "Integrar", "Separar", "Mezclar", "Comprender",
-            "Aceptar", "Rechazar", "Negociar", "Compartir", "Construir",
-            "Destruir", "Integrar", "Separar", "Mezclar", "Comprender",};
-        return verbos;
-    }
+            "Corre", "Salta", "Nada", "Vola", "Camina",
+            "Baila", "Canta", "Pinta", "Escribe", "Lee",
+            "Estudia", "Aprende", "Enseña", "Construye", "Destruye",
+            "Crea", "Imagina", "Sueña", "Resuelve", "Piensa",
+            "Habla", "Escucha", "Observa", "Experimenta", "Descubre",
+            "Viaja", "Conduce", "Navega", "Explora", "Prueba",
+            "Come", "Bebe", "Duerme", "Despierta", "Trabajaa",
+            "Descansa", "Juega", "Compite", "Colabora", "Ayuda",
+            "Ama", "Odia", "Siente", "Emociona", "Cuida",
+            "Atrapa", "Libera", "Grita", "Silba", "Rie",
+            "Llora", "Sonrie", "Gana", "Pierde", "Conquista",
+            "Perdona", "Olvida", "Recuerda", "Celebra", "Lamenta",
+            "Convence", "Debate", "Discute", "Decide", "Duda",
+            "Aferra", "Abandona", "Conecta", "Desconecta", "Explota",
+            "Desarrolla", "Estima", "Valora", "Prefiere", "Sugiere",
+            "Acepta", "Rechaza", "Negocia", "Comparte", "Integra",
+            "Separa", "Mezclar", "Comprender", "Comparte", "Integra",
+            "Separa", "Mezcla","Comprende"};
+    return verbos ;
+}
 
-    @Override
-    public String obtenerVerbo(String palabra) {
+@Override
+public String obtenerVerbo(String palabra) {
+        String salida="";
         String[] obtenerVerbos = agregarVerbo();
         for (String obtenerVerbo : obtenerVerbos) {
-            if (palabra.equals(obtenerVerbo)) {
-                return palabra;
+            if (palabra.equalsIgnoreCase(obtenerVerbo)) {
+                salida=obtenerVerbo;
             }
         }
-        return "";
+        return salida;
     }
 
 }

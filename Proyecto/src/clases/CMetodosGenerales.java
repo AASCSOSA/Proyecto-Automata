@@ -20,13 +20,15 @@ public class CMetodosGenerales implements IMetodosGenerales {
     CPronombre Cpro = new CPronombre();
     CArticulos CArti = new CArticulos();
     CConjunciones CCon = new CConjunciones();
-
+    
+    /*Este método obtiene un texto el cual lo separa por palabra, usando expresiones regualares*/
     @Override
     public ArrayList<String> separarXPalabra(String palabra) {
         ArrayList<String> palabrasSeparadasList = new ArrayList<>();
         String[] palabrasSeparadasArray;
         String delimitadores = "(?<=\\s)|(?=\\s)|(?<=[-+*/(),;=])|(?=[-+*/(),;=])";
         palabrasSeparadasArray = palabra.split(delimitadores);
+        /*Se recorre el array para eliminar los espacios vacíos o en blanco, asi como lo es la tabulaciones, saltos de líneas*/
         for (String palabraSeparada : palabrasSeparadasArray) {
             if (!palabraSeparada.isEmpty() && !palabraSeparada.trim().isEmpty()) {
                 palabrasSeparadasList.add(palabraSeparada);
@@ -34,7 +36,8 @@ public class CMetodosGenerales implements IMetodosGenerales {
         }
         return palabrasSeparadasList;
     }
-
+    /*Este método separa un texto por oraciones, la manera en la cual realiza la separación es por puntos,punto coma, dos puntos, 
+    comas y guiones*/
     @Override
     public String[] separarXOracion(String palabra) {
         String[] palabrasSeparadasArray;
@@ -42,7 +45,8 @@ public class CMetodosGenerales implements IMetodosGenerales {
         palabrasSeparadasArray = palabra.split(delimitadores);
         return palabrasSeparadasArray;
     }
-
+    
+    /*Se obtiene que tipo de elemento es la palabra que se está analizando, esto es reservado en un arryList*/
     @Override
     public ArrayList<String> obtenerElementoLexico(ArrayList<String> palabra) {
         ArrayList<String> salida = new ArrayList<>();
@@ -67,12 +71,14 @@ public class CMetodosGenerales implements IMetodosGenerales {
         salida.add("Conjunción: " + salidaConjuncion);
         return salida;
     }
-
+    /*Separa un texto por palabras las cuales las va concatenando, este método es en especifico para la actividad número 3,
+    ya que concatena con un "+"*/
     @Override
     public String obtenerElementoLexicoBoolean(String palabra) {
         String salida = "";
         ArrayList<String> palabrasSeparadasList = new ArrayList<>();
         ArrayList<String> lexico = separarXPalabra(palabra);
+        /*Se recorre el arrayList de para realizar la comparación, regresará el nombre del elemento léxico*/
         for (String palabraXPalabra : lexico) {
             if (Csus.obtenerSustantivoBool(palabraXPalabra)) {
                 palabrasSeparadasList.add("Sustantivo");
@@ -91,12 +97,15 @@ public class CMetodosGenerales implements IMetodosGenerales {
             }
         }
         for (String palabraSeparada : palabrasSeparadasList) {
-            if(!palabraSeparada.isEmpty()){
+            if (!palabraSeparada.isEmpty()) {
                 salida += palabraSeparada + " + ";
             }
         }
-        if(!salida.isEmpty()){
-        salida = salida.substring(0, salida.length() - 3);
+        /*Al final de las oraciones se termina con oracion+,el signo +, debe de ser eliminado*/
+        /*Se toma el valor de la cadena y se eliminan 3 posiciones*/
+        /*Las posiciones son espacio signo espacio ( + ), por tal motivo se eliminan tres posiciones*/
+        if (!salida.isEmpty()) {
+            salida = salida.substring(0, salida.length() - 3);
         }
         return salida;
     }

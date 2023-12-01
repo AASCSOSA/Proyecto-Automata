@@ -11,4 +11,5 @@ package interfaz;
 public interface IAdverbio {
     String[] agregarAdverbio();
     String obtenerAdverbio(String palabra);
+    boolean obtenerAdverbioBool(String palabra);
 }

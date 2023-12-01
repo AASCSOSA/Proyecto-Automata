@@ -7,15 +7,28 @@ package proyecto;
 import clases.CAdjetivos;
 import clases.CAdverbio;
 import clases.CArticulos;
+import clases.CConjunciones;
+import clases.CMetodosGenerales;
 import clases.CPronombre;
 import clases.CSustantivo;
 import clases.CVerbo;
+import java.util.ArrayList;
+import javax.swing.JOptionPane;
 
 /**
  *
  * @author alanh
  */
 public class main extends javax.swing.JFrame {
+
+    CMetodosGenerales CMetodoG = new CMetodosGenerales();
+    CSustantivo Csus = new CSustantivo();
+    CAdjetivos CAdj = new CAdjetivos();
+    CAdverbio CAdv = new CAdverbio();
+    CVerbo Cverb = new CVerbo();
+    CPronombre Cpro = new CPronombre();
+    CArticulos CArti = new CArticulos();
+    CConjunciones CCon = new CConjunciones();
 
     /**
      * Creates new form main
@@ -34,17 +47,20 @@ public class main extends javax.swing.JFrame {
     private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        jTextElementosLexicos = new javax.swing.JTextArea();
         jButton1 = new javax.swing.JButton();
         txtPalabra = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTextTexto = new javax.swing.JTextArea();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane1.setViewportView(jTextArea1);
+        jTextElementosLexicos.setEditable(false);
+        jTextElementosLexicos.setColumns(20);
+        jTextElementosLexicos.setRows(5);
+        jScrollPane1.setViewportView(jTextElementosLexicos);
 
         jButton1.setText("Mostrar");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -64,21 +80,27 @@ public class main extends javax.swing.JFrame {
         jLabel4.setIcon(new javax.swing.ImageIcon("D:\\Universidad\\Tecnologico\\Quinto Semestre\\Lenguajes y automatas\\Unidad 5\\Proyecto\\Imagenes\\imagen.jpg")); // NOI18N
         jLabel4.setText("jLabel4");
 
+        jTextTexto.setColumns(20);
+        jTextTexto.setRows(5);
+        jScrollPane2.setViewportView(jTextTexto);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jButton1)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(txtPalabra, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(txtPalabra))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(17, 17, 17)
-                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 291, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jScrollPane2)
+                            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 291, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(88, 88, 88)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(201, Short.MAX_VALUE))
@@ -99,51 +121,43 @@ public class main extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(18, 18, 18)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 246, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(76, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 215, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        String[] palabrasSeparadasArray;
-        String palabratxt = txtPalabra.getText();
-        String delimitadores = "(?<=\\s)|(?=\\s)|(?<=[-+*/(),;=])|(?=[-+*/(),;=])";
-        palabrasSeparadasArray = palabratxt.split(delimitadores);
-        String salidaSustantivo="",salidaAdjetivo="",salidaAdverbio="",salidaVerbo="",salidaPronombre="",salidaArticulo="";
-        CSustantivo Csus = new CSustantivo();
-        CAdjetivos CAdj= new CAdjetivos();
-        CAdverbio CAdv= new CAdverbio();
-        CVerbo Cverb= new CVerbo();
-        CPronombre Cpro= new CPronombre();
-        CArticulos CArti= new CArticulos();
-        
-        for (String palabrasSeparada : palabrasSeparadasArray) {
-            salidaSustantivo += Csus.obtenerSustantivo(palabrasSeparada)+" ";
-        }
-        for (String palabrasSeparada : palabrasSeparadasArray) {
-            salidaAdjetivo += CAdj.obtenerAdjetivo(palabrasSeparada)+" ";
-        }
-        for (String palabrasSeparada : palabrasSeparadasArray) {
-            salidaAdverbio += CAdv.obtenerAdverbio(palabrasSeparada)+" ";
-        }
-        for (String palabrasSeparada : palabrasSeparadasArray) {
-            salidaVerbo += Cverb.obtenerVerbo(palabrasSeparada)+" ";
-        }
-        for (String palabrasSeparada : palabrasSeparadasArray) {
-            salidaVerbo += Cverb.obtenerVerbo(palabrasSeparada)+" ";
-        }
-        for (String palabrasSeparada : palabrasSeparadasArray) {
-            salidaPronombre += Cpro.obtenerPronombre(palabrasSeparada)+" ";
-        }
-        for (String palabrasSeparada : palabrasSeparadasArray) {
-            salidaArticulo += CArti.obtenerArticulo(palabrasSeparada)+" ";
-        }
-        jTextArea1.setText("Sustantivos: " + salidaSustantivo+"\n"+"Adjetivos: "+salidaAdjetivo+"\n"+"Adverbios: "+salidaAdverbio+"\n"+"Verbos: "+salidaVerbo);
-
-
+        jTextElementosLexicos.setText(" ");
+        jTextTexto.setText(" ");
+        separarOraciones();
+        elementosLexicos();
+        txtPalabra.setText(" ");
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void elementosLexicos() {
+        String palabratxt = txtPalabra.getText();
+        ArrayList<String> salida = new ArrayList<>();
+        ArrayList<String> palabrasSeparadasList = CMetodoG.separarXPalabra(palabratxt);
+        salida = CMetodoG.obtenerElementoLexico(palabrasSeparadasList);
+        for (String palabra : salida) {
+            jTextElementosLexicos.append(palabra + "\n");
+        }
+    }
+
+    private void separarOraciones() {
+        String palabratxt = txtPalabra.getText();
+        String[] palabrasSeparadasArray = CMetodoG.separarXOracion(palabratxt);
+        String palabraAux = "";
+        int contador = 1;
+        for (String palabraSeparada : palabrasSeparadasArray) {
+            palabraAux=CMetodoG.obtenerElementoLexicoBoolean(palabraSeparada);
+            jTextTexto.append(contador+".-"+palabraSeparada+"\n"+palabraAux+"\n");
+            contador++;
+        }
+    }
     private void txtPalabraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPalabraActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtPalabraActionPerformed
@@ -188,7 +202,9 @@ public class main extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextArea jTextArea1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JTextArea jTextElementosLexicos;
+    private javax.swing.JTextArea jTextTexto;
     private javax.swing.JTextField txtPalabra;
     // End of variables declaration//GEN-END:variables
 }

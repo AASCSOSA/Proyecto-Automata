@@ -32,18 +32,33 @@ public class CSustantivo implements ISustantivo {
             "Nube", "Estrella", "Luna", "Sol", "Universo",
             "Esperanza", "Fe", "Caridad", "Paz", "Guerra",
             "Cambio", "Transformación", "Riqueza", "Pobreza", "Salud",
-            "Enfermedad", "Ética", "Moraleja", "Virtud", "Vicio"};
+            "Enfermedad", "Ética", "Moraleja", "Virtud", "Vicio", "Ratón", "Color", "Vicio", "Ratón",
+            "Viaje", "Cuento", "Niño", "Casa", "Aventura", "Bosque", "Amistad", "Alegría",
+            "Magía", "Risa", "Sueño", "Jardín", "Tesoro", "Aprendizaje", "Color"};
         return sustantivos;
 
     }
 
     @Override
     public String obtenerSustantivo(String palabra) {
-        String salida="";
+        String salida = "";
         String obtenerSustantivos[] = agregarSustantivo();
         for (String obtenerSustantivo : obtenerSustantivos) {
-            if(palabra.equalsIgnoreCase(obtenerSustantivo)){
-            salida=obtenerSustantivo;
+            if (palabra.equalsIgnoreCase(obtenerSustantivo)) {
+                salida = palabra + " ";
+            }
+        }
+        return salida;
+    }
+
+    @Override
+    public boolean obtenerSustantivoBool(String palabra) {
+        boolean salida = false;
+        String obtenerSustantivos[] = agregarSustantivo();
+        for (String obtenerSustantivo : obtenerSustantivos) {
+            if (palabra.equalsIgnoreCase(obtenerSustantivo)) {
+                salida = true;
+                break;
             }
         }
         return salida;

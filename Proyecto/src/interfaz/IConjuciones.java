@@ -11,5 +11,6 @@ package interfaz;
 public interface IConjuciones {
     String[] agregarConjucion();
     String obtenerConjucion(String palabra);
+    boolean obtenerConjucionBool(String palabra);
 }
 

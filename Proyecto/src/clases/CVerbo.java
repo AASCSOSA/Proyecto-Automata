@@ -32,17 +32,30 @@ public class CVerbo implements IVerbo {
             "Desarrolla", "Estima", "Valora", "Prefiere", "Sugiere",
             "Acepta", "Rechaza", "Negocia", "Comparte", "Integra",
             "Separa", "Mezclar", "Comprender", "Comparte", "Integra",
-            "Separa", "Mezcla","Comprende"};
-    return verbos ;
-}
+            "Separa", "Mezcla", "Comprende"};
+        return verbos;
+    }
 
-@Override
-public String obtenerVerbo(String palabra) {
-        String salida="";
+    @Override
+    public String obtenerVerbo(String palabra) {
+        String salida = "";
         String[] obtenerVerbos = agregarVerbo();
         for (String obtenerVerbo : obtenerVerbos) {
             if (palabra.equalsIgnoreCase(obtenerVerbo)) {
-                salida=obtenerVerbo;
+                salida = palabra + " ";
+            }
+        }
+        return salida;
+    }
+
+    @Override
+    public boolean obtenerVerboBool(String palabra) {
+        boolean salida = false;
+        String[] obtenerVerbos = agregarVerbo();
+        for (String obtenerVerbo : obtenerVerbos) {
+            if (palabra.equalsIgnoreCase(obtenerVerbo)) {
+                salida = true;
+                break;
             }
         }
         return salida;

@@ -9,6 +9,11 @@ package interfaz;
  * @author alanh
  */
 public interface IVerbo {
+
     String[] agregarVerbo();
+
     String obtenerVerbo(String palabra);
+
+    boolean obtenerVerboBool(String palabra);
+
 }

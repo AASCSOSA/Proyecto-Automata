@@ -9,6 +9,11 @@ package interfaz;
  * @author Lorenz
  */
 public interface IArticulo {
-        String[] agregarArticulo();
+
+    String[] agregarArticulo();
+
     String obtenerArticulo(String palabra);
+
+    boolean obtenerArticuloBool(String palabra);
+
 }

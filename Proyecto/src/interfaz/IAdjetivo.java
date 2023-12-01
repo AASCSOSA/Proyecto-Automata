@@ -11,4 +11,5 @@ package interfaz;
 public interface IAdjetivo {
     String[] agregarAdjetivo();
     String obtenerAdjetivo(String palabra);
+    boolean obtenerAdjetivoBool(String palabra);
 }

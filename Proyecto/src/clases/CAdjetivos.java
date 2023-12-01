@@ -10,11 +10,11 @@ import interfaz.IAdjetivo;
  *
  * @author alanh
  */
-public class CAdjetivos implements IAdjetivo{
+public class CAdjetivos implements IAdjetivo {
 
     @Override
     public String[] agregarAdjetivo() {
-         String[] adjetivo = {
+        String[] adjetivo = {
             "Alegre", "Triste", "Inteligente", "Creativo", "Valiente",
             "Divertido", "Serio", "Amable", "Energético", "Paciente",
             "Bello", "Feo", "Grande", "Pequeño", "Rápido",
@@ -35,22 +35,37 @@ public class CAdjetivos implements IAdjetivo{
             "Duro", "Suave", "Tranquilo", "Ruidoso", "Difícil",
             "Fácil", "Antiguo", "Moderno", "Caro", "Barato",
             "Largo", "Corto", "Agradable", "Desagradable", "Gigante",
-            "Minúsculo", "Completo", "Incompleto", "Dulce", "Amargo",
+            "Minúsculo", "Completo", "Incompleto", "Dulce", "Amargo", "Azul", "Pequeño", "Curios", "Inquieto", "Valiente", "Juguetón",
+            "Travieso", "Listo", "Audaz", "Amigable", "Peludo", "Explorador", "Astuto", "Alegre", "Hambriento", "Ingenioso", "Asustado",
+            "Sorprendido", "Encantado", "Animado", "Dormilon"
         };
         return adjetivo;
     }
 
     @Override
     public String obtenerAdjetivo(String palabra) {
-        String salida="";
-        String[] obtenerAdjetivos=agregarAdjetivo();
+        String salida = "";
+        String[] obtenerAdjetivos = agregarAdjetivo();
         for (String obtenerAdjetivo : obtenerAdjetivos) {
-            if(palabra.equalsIgnoreCase(obtenerAdjetivo)){
-                salida=obtenerAdjetivo; 
+            if (palabra.equalsIgnoreCase(obtenerAdjetivo)) {
+                salida = obtenerAdjetivo + " ";
             }
         }
         return salida;
-        
+
+    }
+
+    @Override
+    public boolean obtenerAdjetivoBool(String palabra) {
+        boolean salida = false;
+        String[] obtenerAdjetivos = agregarAdjetivo();
+        for (String obtenerAdjetivo : obtenerAdjetivos) {
+            if (palabra.equalsIgnoreCase(obtenerAdjetivo)) {
+                salida = true;
+                break;
+            }
+        }
+        return salida;
     }
 
 }

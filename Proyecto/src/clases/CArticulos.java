@@ -10,28 +10,43 @@ import interfaz.IArticulo;
  *
  * @author Lorenz
  */
-public class CArticulos implements IArticulo{
+public class CArticulos implements IArticulo {
 
     @Override
     public String[] agregarArticulo() {
-         String [] articulos = {
-             "un","una","unos","unas",
-             "el","los", "la","las","lo"
-         };
-         
-         return articulos;
+        String[] articulos = {
+            "un", "una", "unos", "unas",
+            "el", "los", "la", "las", "lo", "este", "esta", "aquel", "aquella",
+            "esos", "esas", "algún", "alguna",
+            "Ningún", "Ninguna", "Aquellos", "Aquellas"
+
+        };
+
+        return articulos;
     }
 
     @Override
     public String obtenerArticulo(String palabra) {
         String salida = "";
-            String obtenerArticulos[] = agregarArticulo();
+        String obtenerArticulos[] = agregarArticulo();
         for (String obtenerArticulo : obtenerArticulos) {
-            if(palabra.equalsIgnoreCase(obtenerArticulo)){
-            salida=obtenerArticulo;
+            if (palabra.equalsIgnoreCase(obtenerArticulo)) {
+                salida = palabra + " ";
             }
         }
         return salida;
     }
-    
+
+    @Override
+    public boolean obtenerArticuloBool(String palabra) {
+        boolean salida = false;
+        String obtenerArticulos[] = agregarArticulo();
+        for (String obtenerArticulo : obtenerArticulos) {
+            if (palabra.equalsIgnoreCase(obtenerArticulo)) {
+                salida = true;
+            }
+        }
+        return salida;
+    }
+
 }

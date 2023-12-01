@@ -9,6 +9,11 @@ package interfaz;
  * @author alanh
  */
 public interface IPronombre {
+
     String[] agregarPronombre();
+
     String obtenerPronombre(String palabra);
+
+    boolean obtenerPronombreBool(String palabra);
+
 }

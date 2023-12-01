@@ -10,12 +10,13 @@ import java.util.ArrayList;
  *
  * @author alanh
  */
-public interface ISustantivo {
+public interface IMetodosGenerales {
 
-    String[] agregarSustantivo();
+    ArrayList<String> separarXPalabra(String palabra);
 
-    String obtenerSustantivo(String palabra);
+    String[] separarXOracion(String palabra);
 
-    boolean obtenerSustantivoBool(String palabra);
+    ArrayList<String> obtenerElementoLexico(ArrayList<String> palabra);
 
+    String obtenerElementoLexicoBoolean(String palabra);
 }

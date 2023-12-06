@@ -54,6 +54,8 @@ public class main extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTextTexto = new javax.swing.JTextArea();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        jTEstructuraTexto = new javax.swing.JTextArea();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -85,6 +87,10 @@ public class main extends javax.swing.JFrame {
         jTextTexto.setRows(5);
         jScrollPane2.setViewportView(jTextTexto);
 
+        jTEstructuraTexto.setColumns(20);
+        jTEstructuraTexto.setRows(5);
+        jScrollPane3.setViewportView(jTEstructuraTexto);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -101,9 +107,11 @@ public class main extends javax.swing.JFrame {
                         .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 291, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(35, 35, 35)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 291, Short.MAX_VALUE)
-                            .addComponent(jScrollPane1))))
-                .addContainerGap(27, Short.MAX_VALUE))
+                            .addComponent(jScrollPane3)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 291, Short.MAX_VALUE))
+                        .addGap(18, 18, 18)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 291, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(186, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -115,12 +123,13 @@ public class main extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(jButton1)
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel4)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 246, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 215, Short.MAX_VALUE)
-                .addGap(16, 16, 16))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING))
+                .addGap(35, 35, 35)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(163, Short.MAX_VALUE))
         );
 
         pack();
@@ -131,6 +140,7 @@ public class main extends javax.swing.JFrame {
         jTextTexto.setText(" ");
         separarOraciones();
         elementosLexicos();
+        estructuraOracion();
         txtPalabra.setText(" ");
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -153,6 +163,13 @@ public class main extends javax.swing.JFrame {
             palabraAux=CMetodoG.obtenerElementoLexicoBoolean(palabraSeparada);
             jTextTexto.append(contador+".-"+palabraSeparada+"\n"+palabraAux+"\n");
             contador++;
+        }
+    }
+    private void estructuraOracion(){
+        String palabratxt = txtPalabra.getText();
+        ArrayList<String> palabrasSeparadasArray = CMetodoG.oracionesSimples(palabratxt);
+        for (String oracionesSimples : palabrasSeparadasArray) {
+            jTEstructuraTexto.append(oracionesSimples+"\n");
         }
     }
     private void txtPalabraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPalabraActionPerformed
@@ -200,6 +217,8 @@ public class main extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JTextArea jTEstructuraTexto;
     private javax.swing.JTextArea jTextElementosLexicos;
     private javax.swing.JTextArea jTextTexto;
     private javax.swing.JTextField txtPalabra;

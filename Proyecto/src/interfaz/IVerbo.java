@@ -13,6 +13,8 @@ public interface IVerbo {
     String[] agregarVerbo();
 
     String obtenerVerbo(String palabra);
+    
+    String obtenerVerboOracion(String palabra);
 
     boolean obtenerVerboBool(String palabra);
 

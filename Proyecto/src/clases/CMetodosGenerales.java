@@ -20,7 +20,7 @@ public class CMetodosGenerales implements IMetodosGenerales {
     CPronombre Cpro = new CPronombre();
     CArticulos CArti = new CArticulos();
     CConjunciones CCon = new CConjunciones();
-    
+
     /*Este método obtiene un texto el cual lo separa por palabra, usando expresiones regualares*/
     @Override
     public ArrayList<String> separarXPalabra(String palabra) {
@@ -36,6 +36,7 @@ public class CMetodosGenerales implements IMetodosGenerales {
         }
         return palabrasSeparadasList;
     }
+
     /*Este método separa un texto por oraciones, la manera en la cual realiza la separación es por puntos,punto coma, dos puntos, 
     comas y guiones*/
     @Override
@@ -45,7 +46,7 @@ public class CMetodosGenerales implements IMetodosGenerales {
         palabrasSeparadasArray = palabra.split(delimitadores);
         return palabrasSeparadasArray;
     }
-    
+
     /*Se obtiene que tipo de elemento es la palabra que se está analizando, esto es reservado en un arryList*/
     @Override
     public ArrayList<String> obtenerElementoLexico(ArrayList<String> palabra) {
@@ -71,6 +72,7 @@ public class CMetodosGenerales implements IMetodosGenerales {
         salida.add("Conjunción: " + salidaConjuncion);
         return salida;
     }
+
     /*Separa un texto por palabras las cuales las va concatenando, este método es en especifico para la actividad número 3,
     ya que concatena con un "+"*/
     @Override
@@ -102,12 +104,40 @@ public class CMetodosGenerales implements IMetodosGenerales {
             }
         }
         /*Al final de las oraciones se termina con oracion+,el signo +, debe de ser eliminado*/
-        /*Se toma el valor de la cadena y se eliminan 3 posiciones*/
-        /*Las posiciones son espacio signo espacio ( + ), por tal motivo se eliminan tres posiciones*/
+ /*Se toma el valor de la cadena y se eliminan 3 posiciones*/
+ /*Las posiciones son espacio signo espacio ( + ), por tal motivo se eliminan tres posiciones*/
         if (!salida.isEmpty()) {
             salida = salida.substring(0, salida.length() - 3);
         }
         return salida;
+    }
+
+    @Override
+    public ArrayList<String> oracionesSimples(String palabra) {
+        int contadorSujeto = 0,contadorPredicado=0;
+        ArrayList<String> separarXOracion = new ArrayList();
+        ArrayList<String> separarPorPalabras = new ArrayList();
+        ArrayList<String> salida = new ArrayList();
+        String[] separadorPalabras = separarXOracion(palabra);
+
+        for (String separadorPalabra : separadorPalabras) {
+            separarPorPalabras = separarXPalabra(separadorPalabra);
+            for (String separarPorPalabra : separarPorPalabras) {
+                if (separarPorPalabra.equalsIgnoreCase(Csus.obtenerSustantivoOracion(separarPorPalabra))) {
+                    contadorSujeto++;
+                }
+                if (separarPorPalabra.equalsIgnoreCase(Cverb.obtenerVerboOracion(separarPorPalabra))) {
+                    contadorPredicado++;
+                }
+            }
+            if (contadorSujeto > 1 && contadorPredicado>1) {
+                break;
+            } else if(contadorSujeto==1 && contadorPredicado==1) {
+                salida.add(separadorPalabra);
+            }
+        }
+        return salida;
+
     }
 
 }

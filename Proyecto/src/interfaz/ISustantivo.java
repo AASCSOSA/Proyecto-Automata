@@ -16,6 +16,8 @@ public interface ISustantivo {
 
     String obtenerSustantivo(String palabra);
 
+    String obtenerSustantivoOracion(String palabra);
+
     boolean obtenerSustantivoBool(String palabra);
 
 }

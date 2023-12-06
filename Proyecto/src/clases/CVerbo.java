@@ -61,4 +61,16 @@ public class CVerbo implements IVerbo {
         return salida;
     }
 
+    @Override
+    public String obtenerVerboOracion(String palabra) {
+        String salida = "";
+        String[] obtenerVerbos = agregarVerbo();
+        for (String obtenerVerbo : obtenerVerbos) {
+            if (palabra.equalsIgnoreCase(obtenerVerbo)) {
+                salida = palabra;
+            }
+        }
+        return salida;
+    }
+
 }

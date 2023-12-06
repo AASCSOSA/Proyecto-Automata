@@ -64,4 +64,16 @@ public class CSustantivo implements ISustantivo {
         return salida;
     }
 
+    @Override
+    public String obtenerSustantivoOracion(String palabra) {
+        String salida = "";
+        String obtenerSustantivos[] = agregarSustantivo();
+        for (String obtenerSustantivo : obtenerSustantivos) {
+            if (palabra.equalsIgnoreCase(obtenerSustantivo)) {
+                salida = palabra;
+            }
+        }
+        return salida;
+    }
+
 }

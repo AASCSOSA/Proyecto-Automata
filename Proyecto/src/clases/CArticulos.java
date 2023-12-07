@@ -15,10 +15,11 @@ public class CArticulos implements IArticulo {
     @Override
     public String[] agregarArticulo() {
         String[] articulos = {
-            "un", "una", "unos", "unas",
-            "el", "los", "la", "las", "lo", "este", "esta", "aquel", "aquella",
-            "esos", "esas", "algún", "alguna",
-            "Ningún", "Ninguna", "Aquellos", "Aquellas"
+             "un","una","unos","unas",
+             "el","los", "la","las","lo",
+             "este","esta","aquel","aquella",
+             "esos","esas","algún","alguna",
+             "Ningún","Ninguna","Aquellos","Aquellas","con",
 
         };
 

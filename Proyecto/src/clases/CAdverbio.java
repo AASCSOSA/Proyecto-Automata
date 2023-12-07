@@ -35,11 +35,11 @@ public class CAdverbio implements IAdverbio {
             "Realmente", "Prácticamente", "Aquí", "Allí", "Ahora",
             "Ayer", "Hoy", "Mañana", "Aún", "Todavía",
             "Después", "Antes", "Pronto", "Tarde", "Nunca",
-            "Siempre", "Casi", "Quizás", "Seguramente", "Bastante", "Quizás", "Seguramente", "Bastante", "Dulcemente",
+            "Siempre", "Casi", "Quizás", "Seguramente", "Bastante", "Dulcemente",
             "Curiosamente", "Valientemente", "Alegremente", "Cuidadosamente", "Suavemente",
             "Ansiosamente", "Amigablemente", "Juguetonamente", "Hábilmente", "Tiernamente", "Astutamente",
             "Felizmente", "Ligeramente", "Sorprendentemente", "Intensamente", "Diariamente", "Eventualmente",
-            "Lentamente"
+            "Lentamente","junto","por",
         };
         return adverbios;
     }

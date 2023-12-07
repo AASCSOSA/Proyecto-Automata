@@ -14,8 +14,9 @@ public class CPronombre implements IPronombre {
 
     @Override
     public String[] agregarPronombre() {
-        String pronombre[] = {"Yo", "me", "mí", "conmigo", "Nosotros", "nos", "nosotras", "Tú", "te", "ti", "contigo", "usted", "vos", "vosotros", "vosotras", "os",
-            "ustedes", "él", "lo", "le", "se", "consigo", "ella", "la", "ello", "lo", "ellos", "ellas", "los", "las", "les", "se", "sí"};
+        String pronombre[]={"Yo","me","mí","conmigo","Nosotros","nos","nosotras","Tú","te","ti","contigo","usted","vos","vosotros","vosotras","os",
+                "ustedes","él","lo","le","se","sí","consigo","ella","ello","lo","ellos","ellas","los","las","les","se","sí","consigo","Tú",
+                "alguien","nadie","quien","quienes","mí","ti","sí"};
 
         return pronombre;
     }

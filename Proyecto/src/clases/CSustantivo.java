@@ -32,9 +32,13 @@ public class CSustantivo implements ISustantivo {
             "Nube", "Estrella", "Luna", "Sol", "Universo",
             "Esperanza", "Fe", "Caridad", "Paz", "Guerra",
             "Cambio", "Transformación", "Riqueza", "Pobreza", "Salud",
-            "Enfermedad", "Ética", "Moraleja", "Virtud", "Vicio", "Ratón", "Color", "Vicio", "Ratón",
-            "Viaje", "Cuento", "Niño", "Casa", "Aventura", "Bosque", "Amistad", "Alegría",
-            "Magía", "Risa", "Sueño", "Jardín", "Tesoro", "Aprendizaje", "Color"};
+            "Enfermedad", "Ética", "Moraleja", "Virtud", "Vicio","Ratón",
+            "Viaje","Cuento","Niño","Casa","Aventura","Bosque","Amistad","Alegría",
+            "Magía","Risa","Sueño","Jardín","Tesoro","Aprendizaje","Color","Playera",
+        "ratones","casa","montaña","calcetines","ratona","vestido","auto","coche","automóvil"
+        ,"calcetin","señor","adulto","bigote","gorra","mamá","Carro","pies","pie","pata","patas"
+        ,"hijo", "autos"
+        };
         return sustantivos;
 
     }

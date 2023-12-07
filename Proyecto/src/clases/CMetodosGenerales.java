@@ -26,7 +26,7 @@ public class CMetodosGenerales implements IMetodosGenerales {
     public ArrayList<String> separarXPalabra(String palabra) {
         ArrayList<String> palabrasSeparadasList = new ArrayList<>();
         String[] palabrasSeparadasArray;
-        String delimitadores = "(?<=\\s)|(?=\\s)|(?<=[-+*/(),;=])|(?=[-+*/(),;=])";
+        String delimitadores = "(?<=\\s)|(?=\\s)|(?<=[-+*/(),;=])|(?=[-+*/(),;=])||(?<=\\?¿)|(?=\\?¿)";
         palabrasSeparadasArray = palabra.split(delimitadores);
         /*Se recorre el array para eliminar los espacios vacíos o en blanco, asi como lo es la tabulaciones, saltos de líneas*/
         for (String palabraSeparada : palabrasSeparadasArray) {
@@ -77,7 +77,7 @@ public class CMetodosGenerales implements IMetodosGenerales {
     ya que concatena con un "+"*/
     @Override
     public String obtenerElementoLexicoBoolean(String palabra) {
-        String salida = "";
+        String salida = "",salir="";
         ArrayList<String> palabrasSeparadasList = new ArrayList<>();
         ArrayList<String> lexico = separarXPalabra(palabra);
         /*Se recorre el arrayList de para realizar la comparación, regresará el nombre del elemento léxico*/
@@ -96,7 +96,16 @@ public class CMetodosGenerales implements IMetodosGenerales {
                 palabrasSeparadasList.add("Artículo");
             } else if (CCon.obtenerConjucionBool(palabraXPalabra)) {
                 palabrasSeparadasList.add("Conjunción");
+            }else if(palabraXPalabra.equalsIgnoreCase("?")|| palabraXPalabra.equalsIgnoreCase("¿")){
+                palabrasSeparadasList.add("Delimitador");
+            }           
+            try{
+                if(Integer.valueOf(palabraXPalabra)instanceof Integer){
+                    palabrasSeparadasList.add("Digito");}
             }
+            catch(Exception e){               
+            }
+                
         }
         for (String palabraSeparada : palabrasSeparadasList) {
             if (!palabraSeparada.isEmpty()) {
@@ -134,6 +143,8 @@ public class CMetodosGenerales implements IMetodosGenerales {
                 break;
             } else if(contadorSujeto==1 && contadorPredicado==1) {
                 salida.add(separadorPalabra);
+                contadorSujeto =0;
+                contadorPredicado =0;
             }
         }
         return salida;

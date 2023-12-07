@@ -35,9 +35,11 @@ public class CAdjetivos implements IAdjetivo {
             "Duro", "Suave", "Tranquilo", "Ruidoso", "Difícil",
             "Fácil", "Antiguo", "Moderno", "Caro", "Barato",
             "Largo", "Corto", "Agradable", "Desagradable", "Gigante",
-            "Minúsculo", "Completo", "Incompleto", "Dulce", "Amargo", "Azul", "Pequeño", "Curios", "Inquieto", "Valiente", "Juguetón",
-            "Travieso", "Listo", "Audaz", "Amigable", "Peludo", "Explorador", "Astuto", "Alegre", "Hambriento", "Ingenioso", "Asustado",
-            "Sorprendido", "Encantado", "Animado", "Dormilon"
+            "Minúsculo", "Completo", "Incompleto", "Dulce", "Amargo","Pequeño",
+            "Curios","Inquieto","Valiente","Juguetón", "Travieso","Listo","Audaz",
+            "Amigable", "Peludo", "Explorador","Astuto","Alegre","Hambriento","Ingenioso",
+            "Asustado","Sorprendido","Encantado", "Animado","Dormilon","Azul","Amarilla","amarillo","rojo",
+            "azul","naranja","rojos","morada","cansado","motivado","morado","violeta","púrpura"
         };
         return adjetivo;
     }

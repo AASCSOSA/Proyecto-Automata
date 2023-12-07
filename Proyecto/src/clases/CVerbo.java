@@ -32,7 +32,9 @@ public class CVerbo implements IVerbo {
             "Desarrolla", "Estima", "Valora", "Prefiere", "Sugiere",
             "Acepta", "Rechaza", "Negocia", "Comparte", "Integra",
             "Separa", "Mezclar", "Comprender", "Comparte", "Integra",
-            "Separa", "Mezcla", "Comprende"};
+            "Separa", "Mezcla","Comprende","está","saludando","van","abrazar",
+            "tiene","sabe","conduce","encuentra","maneja","vende","compra", "saluda"
+        };
         return verbos;
     }
 

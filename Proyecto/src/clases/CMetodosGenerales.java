@@ -77,14 +77,14 @@ public class CMetodosGenerales implements IMetodosGenerales {
     ya que concatena con un "+"*/
     @Override
     public String obtenerElementoLexicoBoolean(String palabra) {
-        String salida = "",salir="";
+        String salida = "", salir = "";
         ArrayList<String> palabrasSeparadasList = new ArrayList<>();
         ArrayList<String> lexico = separarXPalabra(palabra);
         /*Se declaran los delimitadores con los cuales se van a trabajar*/
-        String[] delimitadores={"?","¿",";",":","!","¡"};
+        String[] delimitadores = {"?", "¿", ";", ":", "!", "¡"};
         /*Se recorre el arrayList de para realizar la comparación, regresará el nombre del elemento léxico*/
         for (String palabraXPalabra : lexico) {
-            salir+=palabraXPalabra+"\n";
+            salir += palabraXPalabra + "\n";
             if (Csus.obtenerSustantivoBool(palabraXPalabra)) {
                 palabrasSeparadasList.add("Sustantivo");
             } else if (CAdj.obtenerAdjetivoBool(palabraXPalabra)) {
@@ -99,22 +99,20 @@ public class CMetodosGenerales implements IMetodosGenerales {
                 palabrasSeparadasList.add("Artículo");
             } else if (CCon.obtenerConjucionBool(palabraXPalabra)) {
                 palabrasSeparadasList.add("Conjunción");
-            }
-            /*Se comprueba si es un numero*/
-            else{           
-            try{
-                if(Integer.valueOf(palabraXPalabra)instanceof Integer){
-                    palabrasSeparadasList.add("Digito");}
-            }
-            catch(Exception e){               
-            }
+            } /*Se comprueba si es un numero*/ else {
+                try {
+                    if (Integer.valueOf(palabraXPalabra) instanceof Integer) {
+                        palabrasSeparadasList.add("Dígito");
+                    }
+                } catch (Exception e) {
+                }
             }
             for (String delimitador : delimitadores) {
-                if(delimitador.equalsIgnoreCase(palabraXPalabra)){
+                if (delimitador.equalsIgnoreCase(palabraXPalabra)) {
                     palabrasSeparadasList.add("Delimitador");
                 }
             }
-                
+
         }
         for (String palabraSeparada : palabrasSeparadasList) {
             if (!palabraSeparada.isEmpty()) {
@@ -131,33 +129,56 @@ public class CMetodosGenerales implements IMetodosGenerales {
     }
 
     @Override
-    public ArrayList<String> oracionesSimples(String palabra) {
-        int contadorSujeto = 0,contadorPredicado=0;
+    public ArrayList<String> oraciones(String palabra) {
+
+        ArrayList<String> salida = new ArrayList();
+        ArrayList<String> oracionesSimples = oracionSimple(palabra);
+        for (String oracionSimple : oracionesSimples) {
+            salida.add(oracionSimple + "\n");
+        }
+        return salida;
+
+    }
+
+    @Override
+    public ArrayList<String> oracionSimple(String palabra) {
+        String[] delimitadores = {"?", "¿", ";", ":", "!", "¡"};
+
+        int contadorSujeto = 0, contadorPredicado = 0;
         ArrayList<String> separarXOracion = new ArrayList();
         ArrayList<String> separarPorPalabras = new ArrayList();
+
         ArrayList<String> salida = new ArrayList();
         String[] separadorPalabras = separarXOracion(palabra);
 
         for (String separadorPalabra : separadorPalabras) {
             separarPorPalabras = separarXPalabra(separadorPalabra);
             for (String separarPorPalabra : separarPorPalabras) {
-                if (separarPorPalabra.equalsIgnoreCase(Csus.obtenerSustantivoOracion(separarPorPalabra))) {
+                if(separarPorPalabra.equalsIgnoreCase("?") || separarPorPalabra.equalsIgnoreCase("¿")){
+                    contadorPredicado=2;
+                }
+                else if (separarPorPalabra.equalsIgnoreCase(Csus.obtenerSustantivoOracion(separarPorPalabra))) {
                     contadorSujeto++;
                 }
-                if (separarPorPalabra.equalsIgnoreCase(Cverb.obtenerVerboOracion(separarPorPalabra))) {
+                else if (separarPorPalabra.equalsIgnoreCase(Cverb.obtenerVerboOracion(separarPorPalabra))) {
                     contadorPredicado++;
                 }
+//                if (contadorSujeto > 1 && contadorPredicado > 1) {
+//                    break;
+//                } else if (contadorSujeto == 1 && contadorPredicado == 1) {
+//                    salida.add("Oración Simple\n" + separadorPalabra);
+//                    contadorSujeto = 0;
+//                    contadorPredicado = 0;
+//                }
             }
-            if (contadorSujeto > 1 && contadorPredicado>1) {
-                break;
-            } else if(contadorSujeto==1 && contadorPredicado==1) {
-                salida.add(separadorPalabra);
-                contadorSujeto =0;
-                contadorPredicado =0;
-            }
+            if (contadorSujeto > 1 && contadorPredicado > 1) {
+                    break;
+                } else if (contadorSujeto == 1 && contadorPredicado == 1) {
+                    salida.add("Oración Simple\n" + separadorPalabra);
+                    contadorSujeto = 0;
+                    contadorPredicado = 0;
+                }
         }
         return salida;
-
     }
-
 }

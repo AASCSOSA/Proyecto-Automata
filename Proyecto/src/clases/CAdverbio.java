@@ -25,7 +25,7 @@ public class CAdverbio implements IAdverbio {
             "Nunca", "Seguramente", "Quizás", "Jamás", "Mucho", "Poco", "Muy", "Menos", "Más",
             "Apenas", "Demasiado", "Bastante", "Exactamente", "Solo", "Solamente", "Ciertamente",
             "Realmente", "Prácticamente", "Aquí", "Allí", "Ahora", "Ayer", "Hoy", "Mañana", "Aún",
-            "Todavía", "Después", "Antes", "Diariamente", "Eventualmente", "Lentamente", "junto", "por"
+            "Todavía", "Después", "Antes", "Diariamente", "Eventualmente", "Lentamente", "junto", "por","de"
         };
         return adverbios;
     }

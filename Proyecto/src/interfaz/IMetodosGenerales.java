@@ -19,6 +19,8 @@ public interface IMetodosGenerales {
     ArrayList<String> obtenerElementoLexico(ArrayList<String> palabra);
 
     String obtenerElementoLexicoBoolean(String palabra);
-    
-    ArrayList<String> oracionesSimples(String palabra);
+
+    ArrayList<String> oraciones(String palabra);
+
+    ArrayList<String> oracionSimple(String palabra);
 }

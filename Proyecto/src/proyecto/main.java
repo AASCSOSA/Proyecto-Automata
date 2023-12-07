@@ -174,7 +174,7 @@ public class main extends javax.swing.JFrame {
     }
     private void estructuraOracion(){
         String palabratxt = txtPalabra.getText();
-        ArrayList<String> palabrasSeparadasArray = CMetodoG.oracionesSimples(palabratxt);
+        ArrayList<String> palabrasSeparadasArray = CMetodoG.oraciones(palabratxt);
         String salida = "";
         for (String oracionesSimples : palabrasSeparadasArray) {
             //jTEstructuraTexto.append(oracionesSimples+"\n");

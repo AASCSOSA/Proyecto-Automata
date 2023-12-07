@@ -77,7 +77,7 @@ public class CMetodosGenerales implements IMetodosGenerales {
     ya que concatena con un "+"*/
     @Override
     public String obtenerElementoLexicoBoolean(String palabra) {
-        String salida = "",salir="";
+        String salida = "",salir="",a;
         ArrayList<String> palabrasSeparadasList = new ArrayList<>();
         ArrayList<String> lexico = separarXPalabra(palabra);
         /*Se declaran los delimitadores con los cuales se van a trabajar*/

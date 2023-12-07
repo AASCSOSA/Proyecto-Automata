@@ -26,7 +26,7 @@ public class CMetodosGenerales implements IMetodosGenerales {
     public ArrayList<String> separarXPalabra(String palabra) {
         ArrayList<String> palabrasSeparadasList = new ArrayList<>();
         String[] palabrasSeparadasArray;
-        String delimitadores = "(?<=\\s)|(?=\\s)|(?<=[-+*/(),;=])|(?=[-+*/(),;=])";
+        String delimitadores = "(?<=\\s)|(?=\\s)|(?<=[-+*/(),;=])|(?=[-+*/(),;=])|(?<=[?¿!¡;:])|(?=[?¿!¡;:])";
         palabrasSeparadasArray = palabra.split(delimitadores);
         /*Se recorre el array para eliminar los espacios vacíos o en blanco, asi como lo es la tabulaciones, saltos de líneas*/
         for (String palabraSeparada : palabrasSeparadasArray) {
@@ -80,8 +80,11 @@ public class CMetodosGenerales implements IMetodosGenerales {
         String salida = "",salir="";
         ArrayList<String> palabrasSeparadasList = new ArrayList<>();
         ArrayList<String> lexico = separarXPalabra(palabra);
+        /*Se declaran los delimitadores con los cuales se van a trabajar*/
+        String[] delimitadores={"?","¿",";",":","!","¡"};
         /*Se recorre el arrayList de para realizar la comparación, regresará el nombre del elemento léxico*/
         for (String palabraXPalabra : lexico) {
+            salir+=palabraXPalabra+"\n";
             if (Csus.obtenerSustantivoBool(palabraXPalabra)) {
                 palabrasSeparadasList.add("Sustantivo");
             } else if (CAdj.obtenerAdjetivoBool(palabraXPalabra)) {
@@ -96,14 +99,19 @@ public class CMetodosGenerales implements IMetodosGenerales {
                 palabrasSeparadasList.add("Artículo");
             } else if (CCon.obtenerConjucionBool(palabraXPalabra)) {
                 palabrasSeparadasList.add("Conjunción");
-            }else if(palabraXPalabra.equalsIgnoreCase("?")|| palabraXPalabra.equalsIgnoreCase("¿")){
-                palabrasSeparadasList.add("Delimitador");
-            }           
+            }
+            else{           
             try{
                 if(Integer.valueOf(palabraXPalabra)instanceof Integer){
                     palabrasSeparadasList.add("Digito");}
             }
             catch(Exception e){               
+            }
+            }
+            for (String delimitador : delimitadores) {
+                if(delimitador.equalsIgnoreCase(palabraXPalabra)){
+                    palabrasSeparadasList.add("Delimitador");
+                }
             }
                 
         }

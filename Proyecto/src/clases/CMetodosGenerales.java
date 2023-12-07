@@ -20,6 +20,7 @@ public class CMetodosGenerales implements IMetodosGenerales {
     CPronombre Cpro = new CPronombre();
     CArticulos CArti = new CArticulos();
     CConjunciones CCon = new CConjunciones();
+    int contadorOraciones=0;
 
     /*Este método obtiene un texto el cual lo separa por palabra, usando expresiones regualares*/
     @Override
@@ -127,7 +128,7 @@ public class CMetodosGenerales implements IMetodosGenerales {
         }
         return salida;
     }
-
+    /*Llama a los métodos de las oraciones*/
     @Override
     public ArrayList<String> oraciones(String palabra) {
 
@@ -154,31 +155,24 @@ public class CMetodosGenerales implements IMetodosGenerales {
         for (String separadorPalabra : separadorPalabras) {
             separarPorPalabras = separarXPalabra(separadorPalabra);
             for (String separarPorPalabra : separarPorPalabras) {
-                if(separarPorPalabra.equalsIgnoreCase("?") || separarPorPalabra.equalsIgnoreCase("¿")){
-                    contadorPredicado=2;
-                }
-                else if (separarPorPalabra.equalsIgnoreCase(Csus.obtenerSustantivoOracion(separarPorPalabra))) {
+                if (separarPorPalabra.equalsIgnoreCase("?") || separarPorPalabra.equalsIgnoreCase("¿")) {
+                    contadorPredicado = 2;
+                } else if (separarPorPalabra.equalsIgnoreCase(Csus.obtenerSustantivoOracion(separarPorPalabra))) {
                     contadorSujeto++;
-                }
-                else if (separarPorPalabra.equalsIgnoreCase(Cverb.obtenerVerboOracion(separarPorPalabra))) {
+                } else if (separarPorPalabra.equalsIgnoreCase(Cverb.obtenerVerboOracion(separarPorPalabra))) {
                     contadorPredicado++;
                 }
-//                if (contadorSujeto > 1 && contadorPredicado > 1) {
-//                    break;
-//                } else if (contadorSujeto == 1 && contadorPredicado == 1) {
-//                    salida.add("Oración Simple\n" + separadorPalabra);
-//                    contadorSujeto = 0;
-//                    contadorPredicado = 0;
-//                }
             }
             if (contadorSujeto > 1 && contadorPredicado > 1) {
-                    break;
-                } else if (contadorSujeto == 1 && contadorPredicado == 1) {
-                    salida.add("Oración Simple\n" + separadorPalabra);
-                    contadorSujeto = 0;
-                    contadorPredicado = 0;
-                }
+                break;
+            } else if (contadorSujeto == 1 && contadorPredicado == 1) {
+                contadorOraciones++;
+                salida.add("Oración Simple\n" +contadorOraciones+".- "+ separadorPalabra);
+                contadorSujeto = 0;
+                contadorPredicado = 0;
+            }
         }
+        contadorOraciones=0;
         return salida;
     }
 }

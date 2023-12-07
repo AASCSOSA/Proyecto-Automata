@@ -39,7 +39,7 @@ public class CAdjetivos implements IAdjetivo {
             "Curios","Inquieto","Valiente","Juguetón", "Travieso","Listo","Audaz",
             "Amigable", "Peludo", "Explorador","Astuto","Alegre","Hambriento","Ingenioso",
             "Asustado","Sorprendido","Encantado", "Animado","Dormilon","Azul","Amarilla","amarillo","rojo",
-            "azul","naranja","rojos","morada","cansado","motivado","morado","violeta","púrpura","Enorme"
+            "azul","naranja","rojos","morada","cansado","motivado","morado","violeta","púrpura","Enorme","Vanidoso"
         };
         return adjetivo;
     }

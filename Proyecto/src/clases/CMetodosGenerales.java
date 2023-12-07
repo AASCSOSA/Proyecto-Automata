@@ -100,6 +100,7 @@ public class CMetodosGenerales implements IMetodosGenerales {
             } else if (CCon.obtenerConjucionBool(palabraXPalabra)) {
                 palabrasSeparadasList.add("Conjunción");
             }
+            /*Se comprueba si es un numero*/
             else{           
             try{
                 if(Integer.valueOf(palabraXPalabra)instanceof Integer){

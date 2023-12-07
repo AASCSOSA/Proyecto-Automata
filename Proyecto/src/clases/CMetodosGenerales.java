@@ -80,6 +80,7 @@ public class CMetodosGenerales implements IMetodosGenerales {
         String salida = "",salir="";
         ArrayList<String> palabrasSeparadasList = new ArrayList<>();
         ArrayList<String> lexico = separarXPalabra(palabra);
+        /*Se declaran los delimitadores con los cuales se van a trabajar*/
         String[] delimitadores={"?","¿",";",":","!","¡"};
         /*Se recorre el arrayList de para realizar la comparación, regresará el nombre del elemento léxico*/
         for (String palabraXPalabra : lexico) {

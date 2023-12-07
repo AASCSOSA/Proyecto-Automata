@@ -26,7 +26,7 @@ public class CMetodosGenerales implements IMetodosGenerales {
     public ArrayList<String> separarXPalabra(String palabra) {
         ArrayList<String> palabrasSeparadasList = new ArrayList<>();
         String[] palabrasSeparadasArray;
-        String delimitadores = "(?<=\\s)|(?=\\s)|(?<=[-+*/(),;=])|(?=[-+*/(),;=])||(?<=\\?¿)|(?=\\?¿)";
+        String delimitadores = "(?<=\\s)|(?=\\s)|(?<=[-+*/(),;=])|(?=[-+*/(),;=])";
         palabrasSeparadasArray = palabra.split(delimitadores);
         /*Se recorre el array para eliminar los espacios vacíos o en blanco, asi como lo es la tabulaciones, saltos de líneas*/
         for (String palabraSeparada : palabrasSeparadasArray) {

@@ -37,7 +37,7 @@ public class CAdjetivos implements IAdjetivo {
             "Largo", "Corto", "Agradable", "Desagradable", "Gigante",
             "Minúsculo", "Completo", "Incompleto", "Dulce", "Amargo", "Azul", "Pequeño", "Curios", "Inquieto", "Valiente", "Juguetón",
             "Travieso", "Listo", "Audaz", "Amigable", "Peludo", "Explorador", "Astuto", "Alegre", "Hambriento", "Ingenioso", "Asustado",
-            "Sorprendido", "Encantado", "Animado", "Dormilon"
+            "Sorprendido", "Encantado", "Animado", "Dormilon","Hermoso"
         };
         return adjetivo;
     }

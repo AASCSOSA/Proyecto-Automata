@@ -64,7 +64,7 @@ public class main extends javax.swing.JFrame {
         jTextElementosLexicos.setRows(5);
         jScrollPane1.setViewportView(jTextElementosLexicos);
 
-        jButton1.setText("Mostrar");
+        jButton1.setText("Aceptar");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
